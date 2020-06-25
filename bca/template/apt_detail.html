@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<header class="header-section">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 header-top-left">
+                    <div class="top-info">
+                        <i class="fa fa-envelope"></i>
+                        kumawatkrishan658@gmail.com
+                    </div>
+                </div>
+                <div class="col-lg-6 text-lg-right header-top-right">
+                    <div class="top-social">
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href=""><i class="fa fa-instagram"></i></a>
+                        <a href=""><i class="fa fa-pinterest"></i></a>
+                        <a href=""><i class="fa fa-linkedin"></i></a>
+                    </div>
+                    <div class="user-panel">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}"><i class="fa fa-lock"></i> Logout</a>
+                        {% else %}
+                        <a href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Login</a>
+                        <a href="{% url 'register' %}"><i class="fa fa-sign-up"></i> Signup</a>
+                         
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="site-navbar">
+                    <a href="#" class="site-logo"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                    <div class="nav-switch">
+                        <i class="fa fa-bars"></i>
+                    </div>
+                    <ul class="main-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about.html">ABOUT US</a></li>						
+                        <li><a href="#">BLOG</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="hero-section set-bg"  style="height:600px;" data-setbg="{% static 'img/bg.jpg' %}">
+	<div class="container hero-text text-white">
+		<h2>find your place with our local life style</h2>
+		<p>Search real estate property records, houses, condos, land and more on leramiz.com®.<br>Find property info from the most comprehensive source data.</p>
+	</div>
+</section>
+	<!-- Filter form section -->
+    <div class="filter-search">
+		<div class="container w-50 p-3">
+			<form class="filter-form" action=" " method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <select>
+                    <option selected="selected">Flat Size</option>
+                    <option value="sqfoot">600</option>
+                    <option value="sqfoot">900</option>
+                    <option value="sqfoot">1100</option>			
+                </select>
+				<select>
+                    <option selected="selected">Flat Type</option>
+					<option value="ftype" >1BHK</option>
+					<option value="ftype" >2BHK</option>
+					<option value="ftype" >3BHK</option>			
+				</select>
+				<button   class="site-btn fs-submit" >SEARCH</button>
+			</form>
+		</div>
+	</div>
+ 
+<div class="container shadow mt-2 h-75 p-3">
+    <img src="{% static 'img/bg.jpg' %}"  style=" height: 400px; width: 100%;" alt="">
+</div>
+
+
+<div class="container mt-2 shadow">
+    <div class="row  ">
+        <div class="col-md-6 col-sm-4">
+            <span style="font-size: 20px; font-weight: bold;">Fortune Soumya Santosa</span><br>
+            <span  >Behind Capital Mall, Bagli, Hoshangabad Road, Bhopal</span>
+        </div>
+        <div class="col-md-6 col-md-4">
+            <span style="font-size: 20px; color: red;   font-weight: bold;"><i class="fa fa-inr" aria-hidden="true"></i>
+                15 Lac - 25 Lac</span>
+        </div>
+    </div><br>
+    <div class="row  ">
+        <div class="col-md-3 col-sm-4 w-25 p-3" style="border: 1px solid rgba(230, 216, 216, 0.658);">
+            <span style="font-weight:bold ;">Availability</span><br>
+            <span>Residential Plot</span>
+        </div>
+        <div class="col-md-3 col-sm-4 w-25 p-3" style="border: 1px solid rgba(230, 216, 216, 0.658);">
+            <span style="font-weight:bold ;">Area</span><br>
+            <span>840 Sq. Ft. - 1100 Sq. Ft. </span>
+        </div>
+        <div class="col-md-3 col-sm-4 w-25 p-3" style="border: 1px solid rgba(230, 216, 216, 0.658);">
+            <span style="font-weight:bold ;">Price / sq.ft.</span><br>
+            <span> 1799 / sq.ft. </span>
+        </div>
+        <div class="col-md-3 col-sm-4 w-25 p-3" style="border: 1px solid rgba(230, 216, 216, 0.658);">
+            <span style="font-weight:bold ;">Ploat Type</span><br>
+            <span>1 BHK & 2 BHK</span>
+        </div>
+    </div>
+</div>
+
+<div class="container shadow mt-2">
+    <div class="row">
+        <div class="col-md-3 col-sm-4 w-25 p-3" style="border: 1px solid rgba(230, 216, 216, 0.658);">
+            <a href="#about" style="display: block;"><span  style="font-weight: bold; color: black;">About</span> </a>
+        </div>
+        <div class="col-md-3 col-sm-4 w-25 p-3" style="border: 1px solid rgba(230, 216, 216, 0.658);">
+            <a href="#unit" style="display: block;"><span style="font-weight: bold; color: black;">Unit</span> </a>
+        </div>
+        <div class="col-md-3 col-sm-4 w-25 p-3" style="border: 1px solid rgba(230, 216, 216, 0.658); ">
+            <a href="#amenities" style="display: block;"><span style="font-weight: bold; color: black;">Amenities</span> </a>
+        </div>
+        <div class="col-md-3 col-sm-4 w-25 p-3" style="border: 1px solid rgba(230, 216, 216, 0.658);">
+            <a href="#specifications" style="display: block;"><span style="font-weight: bold; color: black;">Specifications</span> </a>
+        </div>
+    </div>
+</div>
+
+<div class="container shadow mt-2" id="about">
+    <div class="col-md-12 col-sm-6 w-100 p-3">
+        <h5>About Fortune Soumya Santosa</h5>
+        <p style="font-family: Arial, Helvetica, sans-serif;">Fortune Soumya Santosa is a residential development in Misrod, Bhopal. The project is built by Fortune Soumya Housing. They provide Skillfully designed plots with all necessities. It is approved by Madhya Pradesh RERA.</p>
+    </div>
+</div>
+
+<div class="container shadow" id="unit">
+    <div class="row">
+        <div class="col-md-5 w-25 p-3">
+            <a href="#accordion"><span style="font-weight: bold; color: black;">1 BHK</span> </a>&emsp;&emsp;&emsp;&emsp;
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-md-12">
+            <div id="accordion" class="plan-accordion">
+                <div class="panel">
+                    <div class="panel-header" id="headingOne">
+                        <button class="panel-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1"><span>525.56  sq ft</span>	<i class="fa fa-angle-down"></i></button>
+                    </div>
+                    <div id="collapse1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="panel-body">
+                            <center><img src="{% static 'img/feature-cate/1.jpg' %}" alt=""></center> 
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-header" id="headingTwo">
+                        <button class="panel-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2"><span> 660.56 sq ft.</span>	<i class="fa fa-angle-down"></i>
+                        </button>
+                    </div>
+                    <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="panel-body">
+                           <center><img class="h-25" id="2bhk" src="{% static 'img/feature-cate/3.jpg' %}" alt=""></center> 
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 w-25 p-3"> 
+            <a href="#accordion1"><span style="font-weight: bold; color: black;">2 BHK</span> </a>&emsp;&emsp;&emsp;&emsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="accordion1" class="plan-accordion">
+                <div class="panel">
+                    <div class="panel-header" id="headingOne">
+                        <button class="panel-link" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse1"><span>680 sq ft</span>	<i class="fa fa-angle-down"></i></button>
+                    </div>
+                    <div id="collapse4" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="panel-body">
+                            <center><img src="{% static 'img/feature-cate/1.jpg' %}" alt=""></center> 
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-header" id="headingTwo">
+                        <button class="panel-link" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse2"><span>750 sq ft.</span>	<i class="fa fa-angle-down"></i>
+                        </button>
+                    </div>
+                    <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="panel-body">
+                           <center><img class="h-25" id="2bhk" src="{% static 'img/feature-cate/3.jpg' %}" alt=""></center> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    </div>
+ 
+<div class="container shadow mt-2" id="amenities">
+    <div class="row">
+        <div class="col-md-12">
+        <h5>Amenities</h5><hr>
+        </div>
+    </div>
+    <div class="row   w-100 p-3">
+        <div class="col-md-4 ">
+            <i class="fa fa-lock" aria-hidden="true"></i> <span>Security</span>
+        </div>
+        <div class="col-md-4">
+            <i class="fa fa-tree" aria-hidden="true"></i><span>Landscape Garden</span>
+        </div>
+        <div class="col-md-4">
+            <i class="fa fa-tint" aria-hidden="true"></i><span>24 Hours Water Supply</span>
+        </div>
+    </div>
+    <div class="row   w-100 p-3">
+        <div class="col-md-4">
+            <span>Swimming Pool</span>
+        </div>
+        <div class="col-md-4">
+             <span>Gym </span>
+        </div>
+        <div class="col-md-4">
+            <span>Kids Play Area</span>
+        </div>
+    </div>
+</div>
+
+<div class="container shadow mt-2" id="specifications">
+    <div class="row w-25 p-3 ">
+        <div class="col-md-12"><h5>Project Specifications</h5><hr></div>
+    </div>
+    <div class="row w-20 p-3 ">
+        <div class="col-md-4"><span><b>Society</b></span><br>
+            <span>Yes</span>
+        </div>
+        <div class="col-md-4"><span><b>Gated Community</b></span>
+            <br>
+        <span>Yes</span>
+        </div>
+    </div>
+    
+</div>
+
+<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scel<span id="dots">...</span><span id="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
+
+<button onclick="myFunction()" id="myBtn">Read more</button>  -->
+<!-- <script>
+    function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
+  }
+} 
+</script> -->
+{% endblock %}
+ 
+ 
+ 

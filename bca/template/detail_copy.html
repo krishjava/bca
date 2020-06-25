@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ratings %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<!-- <div class="col-lg-12">
+       <img src="{% static 'img/a.jpg' %}" class=""   alt="">
+        
+      </div> -->
+
+
+<header class="header-section">
+  <div class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 header-top-left">
+          <div class="top-info">
+            <i class="fa fa-phone"></i>
+            8118898116
+          </div>
+          <div class="top-info">
+            <i class="fa fa-envelope"></i>
+            kumawatkrishan658@gmail.com
+          </div>
+        </div>
+        <div class="col-lg-6 text-lg-right header-top-right">
+          <div class="top-social">
+            <a href=""><i class="fa fa-facebook"></i></a>
+            <a href=""><i class="fa fa-twitter"></i></a>
+            <a href=""><i class="fa fa-instagram"></i></a>
+            <a href=""><i class="fa fa-pinterest"></i></a>
+            <a href=""><i class="fa fa-linkedin"></i></a>
+          </div>
+          <div class="user-panel">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}"><i class="fa fa-logout"></i> Logout</a>
+            {% else %}
+            <a href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Login</a>
+            <a href="{% url 'register' %}"><i class="fa fa-sign-up"></i> Signup</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="site-navbar">
+          <a href="#" class="site-logo"><img src="{% static 'img/logo.png' %}" alt=""></a>
+          <div class="nav-switch">
+            <i class="fa fa-bars"></i>
+          </div>
+          <ul class="main-menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Header section end -->
+
+
+
+ 
+  <!-- messages in django -->
+
+  <div class="mt-5 pt-4">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert text-center alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+<section class="page-section" style="margin-top: 70px;">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12 single-list-page">
+              <div class="single-list-slider owl-carousel" id="sl-slider">
+                  <div class="sl-item set-bg" data-setbg="{{product.image.url }}">
+                      <div class="sale-notic">Property</div>
+                  </div>
+                  <div class="sl-item set-bg"  data-setbg="{{product.bedroom_img.url }}">
+                      <div class="rent-notic">Bedroom</div>
+                  </div>
+                  <div class="sl-item set-bg" data-setbg="{{product.kitchen_img.url }}">
+                      <div class="sale-notic">Kitchen</div>
+                  </div>
+                  <div class="sl-item set-bg" data-setbg="{{product.swimming_pool.url }}">
+                      <div class="rent-notic">Swimming pool</div>
+                  </div>
+                  <div class="sl-item set-bg" data-setbg="{{product.kitchen_img.url }}">
+                      <div class="sale-notic">LetBath</div>
+                  </div>
+              </div>
+              <div class="owl-carousel sl-thumb-slider" id="sl-slider-thumb">
+                  <div class="sl-thumb set-bg" data-setbg="{{product.kitchen_img.url }}"></div>
+                  <div class="sl-thumb set-bg" data-setbg="{{product.kitchen_img.url }}"></div>
+                  <div class="sl-thumb set-bg" data-setbg="{{product.kitchen_img.url }}"></div>
+                  <div class="sl-thumb set-bg" data-setbg="{{product.kitchen_img.url }}"></div>
+                  <div class="sl-thumb set-bg" data-setbg="{{product.kitchen_img.url }}"></div>
+              </div>
+              <div class="single-list-content">
+                  <div class="row">
+                      <div class="col-xl-8 sl-title">
+                          <h2>305 North Palm Drive</h2>
+                          <p><i class="fa fa-map-marker"></i>Beverly Hills, CA 90210</p>
+                      </div>
+                      <div class="col-xl-4">
+                          <a href="{% url 'core:item_detail' product.id %}" class="price-btn">{{product.price}}</a>
+                      </div>
+                  </div>
+                  <h3 class="sl-sp-title">Property Specifications</h3>
+                  <div class="row property-details-list">
+                      <div class="col-md-4 col-sm-6">
+                          <p><i class="fa fa-th-large"></i> 1500 Square foot</p>
+                          <p><i class="fa fa-bed"></i> 16 Bedrooms</p>
+                          <p><i class="fa fa-check-circle-o"></i> 
+                            Overlooking<br>  
+                            <b class="ml-4">Garden/Park, Main Road</b>
+                          </p>
+                      </div>
+                      <div class="col-md-4 col-sm-6">
+                        <p><i class="fa fa-car"></i> 2 Garages</p>
+                        <p><i class="fa fa-tint" aria-hidden="true"></i>
+                         Water/Electricity 24x7</p>
+                      </div>
+                      <div class="col-md-4 col-sm-6">
+                          <p><i class="fa fa-bath"></i> 8 Bathrooms</p>
+                          <p><i class="fa fa-check-circle-o"></i> 
+                            Flooring Type<br>
+                            <b class="ml-4">Vitrified Tiles Flooring</b>
+                          </p>
+                          
+                      </div>
+                  </div>
+                  
+
+{% if product.status == "S" %}
+{% if form2 %}
+<div class="container mt-5">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#itemdetil">
+    Buy
+  </button>
+  <div class="modal fade" id="itemdetil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Property </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p class="text-danger"> {{error}} </p>
+          <form class="form-group" method="post">
+            {% csrf_token %}
+            {{ form2|crispy }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+            
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+            <div class="text-muted pt-3">
+                <small>Apply T&C</small>
+            </div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+{% endif %} 
+{% endif %}
+
+
+{% if product.status == "R" %}
+{% if form1 %}
+<div class="container mt-5">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#itemdetil">
+    Take On Rent
+  </button>
+  <div class="modal fade" id="itemdetil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Property </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p class="text-danger"> {{error}} </p>
+          <form class="form-group" method="post">
+            {% csrf_token %}
+            {{ form1|crispy }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+            
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+            <div class="text-muted pt-3">
+                <small>Apply T&C</small>
+            </div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+{% endif %} 
+{% endif %}
+              </div>
+          </div>
+          <!-- sidebar -->
+           
+      </div>
+  </div>
+</section>
+
+
+
+
+
+
+{% endblock %}
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>

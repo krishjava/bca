@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-4">
+           {% if msg %}
+           <div class="alert alert-danger" role="alert">
+               {{msg}}
+           </div>
+           {% endif%}
+           <form action="{% url 'register' %}" method="POST" onsubmit="return reg_valid()">
+               {% csrf_token %}
+               <div class="form-group">
+                 {% if user_msg %}
+                 <span class="alert alert-danger">{{user_msg}}</span><br> <br>
+                 {% endif %}
+                 <label for="username">Username</label>
+                 <input type="text" class="form-control" name="username" id="name" required>
+                 <span id="name_error" class="text-danger"></span>
+               </div>
+               <div class="form-group">
+                 {% if email_msg %}
+                <span class="alert alert-danger"> {{email_msg}} </span> <br> <br>
+                {% endif %}
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" required>
+              </div>
+               <div class="form-group">
+                {% if pass_msg %}
+                <span class="text-danger">{{pass_msg}}</span> <br> <br>
+                {% endif %}
+                 <label for="exampleInputPassword1">Password</label>
+                 <input type="password" class="form-control" name="password1" id="pass1" required>
+                 <span id="password_error" class="text-danger"></span> <br>
+                 <small style="color: gray;">Your password can’t be too similar to your other personal information.</small> <br>
+                 <small style="color: gray;">Your password must contain at least 8 characters.</small> <br>
+                 <small style="color: gray;">Your password can’t be a commonly used password.</small> <br>
+                 <small style="color: gray;">Your password can’t be entirely numeric.</small> <br>
+               </div>
+               <div class="form-group">
+                   <label for="exampleInputPassword1">Confirm Password</label>
+                   <input type="password" class="form-control" name="password2" id="pass2" required>
+               </div>
+               <div class="form-group form-check">
+                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
+               </div>
+               <center><button type="submit" class="btn btn-primary">Submit</button></center>
+             </form>
+             <div class="border-top pt-3">
+              <small class="text-muted">
+                Already Have An Account? <a href="{% url 'login' %}" class="ml-2">Sig In</a>
+              </small>
+            </div>
+        </div>
+    </div>
+   </div>
+
+<script>
+  function reg_valid(){
+    var name=document.getElementById("name").value;
+    var password1=document.getElementById("pass1").value;
+    var password2=document.getElementById("pass2").value;
+    var regex = /^[a-zA-Z]+$/ ;
+    var passwordregex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    if(name.length <=4){
+      document.getElementById("name_error").innerHTML = "** Must Be 5 Character";
+      return false;
+    }
+    if(regex.test(name)){
+      document.getElementById("name_error").innerHTML = "";
+    }
+    else{
+      document.getElementById("name_error").innerHTML = "** Must Be Alphabat";
+      return false;
+    }
+    if(password1.length <= 7){
+      document.getElementById("password_error").innerHTML = "** 8 Character Required";
+      return false;
+    }
+    if(passwordregex.test(password1)){
+      document.getElementById("password_error").innerHTML = "";
+    }
+    else{
+      document.getElementById("password_error").innerHTML = "Don't Allowed Simple Password";
+      return false;
+    }
+    
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="properties-section spad">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>RECENT PROPERTIES</h3>
+            <p>Discover how much the latest properties have been sold for</p>
+        </div>
+        <div class="row">
+            <h1 class="text-warning" >{{ results }}</h1>
+            {% for i in result %}
+            <div class="col-md-6">
+        
+            <a href="{% url 'core:item_detail' i.id %}">	<div class="propertie-item set-bg" data-setbg="{{ i.image.url }}">
+                    <div class="rent-notic">{{ i.status }}</div>
+                    <div class="propertie-info text-white">
+                        <div class="info-warp">
+                            <h5>{{ i.town_address }}</h5>
+                            <p><i class="fa fa-map-marker"></i> {{ i.city }}</p>
+                        </div>
+                        <div class="price">${{ i.price }}</div>
+                    </div>
+                </div></a>
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
