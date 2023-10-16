@@ -16,3 +16,4 @@ src/*.egg-info
 lib
 lib64
 img
+migrations
