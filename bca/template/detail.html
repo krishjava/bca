@@ -1,480 +1,203 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load ratings %}
-{% load crispy_forms_tags %}
 {% block content %}
+  <body>
 
-
-<!-- <div class="col-lg-12">
+   <!-- <div class="col-lg-12">
        <img src="{% static 'img/a.jpg' %}" class=""   alt="">
         
       </div> -->
 
-
-<header class="header-section">
-  <div class="header-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 header-top-left">
-          <div class="top-info">
-            <i class="fa fa-phone"></i>
-            8118898116
-          </div>
-          <div class="top-info">
-            <i class="fa fa-envelope"></i>
-            kumawatkrishan658@gmail.com
+      
+      <header class="header-section">
+        <div class="header-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 header-top-left">
+                <div class="top-info">
+                  <i class="fa fa-phone"></i>
+                  8118898116
+                </div>
+                <div class="top-info">
+                  <i class="fa fa-envelope"></i>
+                  kumawatkrishan658@gmail.com
+                </div>
+              </div>
+              <div class="col-lg-6 text-lg-right header-top-right">
+                <div class="top-social">
+                  <a href=""><i class="fa fa-facebook"></i></a>
+                  <a href=""><i class="fa fa-twitter"></i></a>
+                  <a href=""><i class="fa fa-instagram"></i></a>
+                  <a href=""><i class="fa fa-pinterest"></i></a>
+                  <a href=""><i class="fa fa-linkedin"></i></a>
+                </div>
+                <div class="user-panel">
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'account_logout' %}"><i class="fa fa-logout"></i> Logout</a>
+                  {% else %}
+                  <a href="{% url 'account_login' %}"><i class="fa fa-sign-in"></i>Login</a>
+                  <a href="{% url 'account_signup' %}"><i class="fa fa-sign-up"></i> Signup</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-lg-6 text-lg-right header-top-right">
-          <div class="top-social">
-            <a href=""><i class="fa fa-facebook"></i></a>
-            <a href=""><i class="fa fa-twitter"></i></a>
-            <a href=""><i class="fa fa-instagram"></i></a>
-            <a href=""><i class="fa fa-pinterest"></i></a>
-            <a href=""><i class="fa fa-linkedin"></i></a>
-          </div>
-          <div class="user-panel">
-            {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}"><i class="fa fa-logout"></i> Logout</a>
-            {% else %}
-            <a href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Login</a>
-            <a href="{% url 'register' %}"><i class="fa fa-sign-up"></i> Signup</a>
-            {% endif %}
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="site-navbar">
+                <a href="#" class="site-logo"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                <div class="nav-switch">
+                  <i class="fa fa-bars"></i>
+                </div>
+                <ul class="main-menu">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="about.html">ABOUT US</a></li>						
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
+      </header>
+      <!-- Header section end -->
+    
+    <section class="hero-section set-bg"  style="height:600px;" data-setbg="{% static 'img/bg1.jpg' %}">
+      <div class="container hero-text text-white">
+        <h2>find your place with our local life style</h2>
+        <p>Search real estate property records, houses, condos, land and more on leramiz.com®.<br>Find property info from the most comprehensive source data.</p>
       </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="site-navbar">
-          <a href="#" class="site-logo"><img src="{% static 'img/logo.png' %}" alt=""></a>
-          <div class="nav-switch">
-            <i class="fa fa-bars"></i>
-          </div>
-          <ul class="main-menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="about.html">ABOUT US</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+    </section>
+      <div class="container" style="margin-top: 60px;">
+        <div class="row">
+          <div class="col-lg-12">				 
+            <div class="single-list-content">
+              <h3 class="sl-sp-title text-center">Property Details</h3>
+              <div class="row property-details-list">
+                <div class="col-md-4 col-sm-6">
+                  <p><i class="fa fa-th-large"></i> 1500 Square foot</p>
+                  <p><i class="fa fa-bed"></i> {{ product.bedroom }} <a href="#bedroom"> Bedrooms</a></p></a> 
+                  <p><i class="fa fa-user"></i> Gina Wesley</p>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                  <p><i class="fa fa-car"></i> 2 Garages</p>
+                  <p><i class="fa fa-building-o"></i> <a href="#krishan">{{ product.kitchen }} kitchen</a></p>
+                  <p><i class="fa fa-clock-o"></i> 1 days ago</p>
+                </div>
+                <div class="col-md-4">
+                  <p><i class="fa fa-bath"></i> {{ product.let_bath }} Bathrooms</p>
+                </div>
+                <div class="container d-flex "><a href="mailto:- swaminaresh993@gmail.com" class="btn btn-primary"><i class="fa mr-5 fa-send"></i>  BUY OR  TAKE ON RENT : EMAIL ME  </a></div>
+
+              </div>
+            </div>
+          </div>		
+          	 
         </div>
+        
       </div>
-    </div>
-  </div>
-</header>
-<!-- Header section end -->
-
-
-
-
-<section class="hero-section set-bg" style="height:600px;" data-setbg="{% static 'img/bg.jpg' %}">
-  <div class="container hero-text text-white">
-    <h2>find your place with our local life style</h2>
-    <p>Search real estate property records, houses, condos, land and more on leramiz.com®.<br>Find property info from
-      the most comprehensive source data.</p>
-  </div>
-
-  <!-- messages in django -->
-
-  <div class="mt-5 pt-4">
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert text-center alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    {% endfor %}
-    {% endif %}
-  </div>
-</section>
-<!-- <div class="container" style="margin-top: 60px;">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="single-list-content">
-        <h3 class="sl-sp-title text-center">Property Details</h3>
-        <div class="row property-details-list">
-          <div class="col-md-4 col-sm-6">
-            <p><i class="fa fa-th-large"></i> 1500 Square foot</p>
-            <p><i class="fa fa-bed"></i> {{ product.bedroom }} <a href="#bedroom"> Bedrooms</a></p></a>
-            <p><i class="fa fa-user"></i> Gina Wesley</p>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <p><i class="fa fa-car"></i> 2 Garages</p>
-            <p><i class="fa fa-building-o"></i> <a href="#krishan">{{ product.kitchen }} kitchen</a></p>
-            <p><i class="fa fa-clock-o"></i> 1 days ago</p>
-          </div>
-          <div class="col-md-4">
-            <p><i class="fa fa-bath"></i> {{ product.let_bath }} Bathrooms</p>
-          </div>
-          <div class="container d-flex "><a href="mailto:- swaminaresh993@gmail.com" class="btn btn-primary"><i
-                class="fa mr-5 fa-send"></i> BUY OR TAKE ON RENT : EMAIL ME </a></div>
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-
-
-
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-lg-8">
-      <h1 class="text-center" style="font-family: Georgia, 'Times New Roman', Times, serif;">kitchen</h1>
-
-      <div class="img-fluid  img-thumbnail justify-content-center d-flex img-fluid" id="krishan"><img
-          src="{{product.kitchen_img.url }}" alt=""></div>
-    </div>
-    <div class="col-lg-4 float-right">
-      <div class="img-fluid img-thumbnail justify-content-center d-flex img-fluid" id="krishan"><img
-          src="{{product.kitchen_img.url }}" alt=""></div>
-      <div class="img-fluid img-thumbnail justify-content-center d-flex img-fluid" id="krishan"><img
-          src="{{product.kitchen_img.url }}" alt=""></div>
-    </div>
-
-  </div>
-  <div class="row mt-5">
-    <div class="col-lg-8">
-      <h1 class="text-center" id=bedroom style="font-family: Georgia, 'Times New Roman', Times, serif;">Bedrooms</h1>
-      <div class="img-fluid  img-thumbnail justify-content-center d-flex img-fluid" id="krishan"><img
-          src="{{product.bedroom_img.url }}" alt=""></div>
-    </div>
-    <div class="col-lg-4 float-right">
-      <div class="img-fluid img-thumbnail justify-content-center d-flex img-fluid" id="krishan"><img
-          src="{{product.bedroom_img.url }}" alt=""></div>
-      <div class="img-fluid img-thumbnail justify-content-center d-flex img-fluid" id="krishan"><img
-          src="{{product.bedroom_img.url }}" alt=""></div>
-    </div>
-
-  </div>
-</div>
-<div class="container-fluid">
-  <div id="property-carousel" class="carousel slide mt-3" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#property-carousel" data-slide-to="0" class="active"></li>
-      <li data-target="#property-carousel" data-slide-to="1"></li>
-      <li data-target="#property-carousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" style="height:100%;">
-      <div class="carousel-item active">
-        <img src="{{product.kitchen_img.url }}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{{product.kitchen_img.url }}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{{product.kitchen_img.url }}" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#property-carousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#property-carousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div> -->
-
-<section class="page-section" style="margin-top: 70px;">
-  <div class="container">
       <div class="row">
-          <div class="col-lg-12 single-list-page">
-              <div class="single-list-slider owl-carousel" id="sl-slider">
-                  <div class="sl-item set-bg" data-setbg="{{product.image.url }}">
-                      <div class="sale-notic">Property</div>
-                  </div>
-                  <div class="sl-item set-bg"  data-setbg="{{product.bedroom_img.url }}">
-                      <div class="rent-notic">Bedroom</div>
-                  </div>
-                  <div class="sl-item set-bg" data-setbg="{{product.kitchen_img.url }}">
-                      <div class="sale-notic">Kitchen</div>
-                  </div>
-                  <div class="sl-item set-bg" data-setbg="{{product.swimming_pool.url }}">
-                      <div class="rent-notic">Swimming pool</div>
-                  </div>
-                  <div class="sl-item set-bg" data-setbg="{{product.kitchen_img.url }}">
-                      <div class="sale-notic">LetBath</div>
-                  </div>
-              </div>
-              <div class="owl-carousel sl-thumb-slider" id="sl-slider-thumb">
-                  <div class="sl-thumb set-bg" data-setbg="{{product.kitchen_img.url }}"></div>
-                  <div class="sl-thumb set-bg" data-setbg="{{product.kitchen_img.url }}"></div>
-                  <div class="sl-thumb set-bg" data-setbg="{{product.kitchen_img.url }}"></div>
-                  <div class="sl-thumb set-bg" data-setbg="{{product.kitchen_img.url }}"></div>
-                  <div class="sl-thumb set-bg" data-setbg="{{product.kitchen_img.url }}"></div>
-              </div>
-              <div class="single-list-content">
-                  <div class="row">
-                      <div class="col-xl-8 sl-title">
-                          <h2>305 North Palm Drive</h2>
-                          <p><i class="fa fa-map-marker"></i>Beverly Hills, CA 90210</p>
-                      </div>
-                      <div class="col-xl-4">
-                          <a href="{% url 'core:item_detail' product.id %}" class="price-btn">{{product.price}}</a>
-                      </div>
-                  </div>
-                  <h3 class="sl-sp-title">Property Specifications</h3>
-                  <div class="row property-details-list">
-                      <div class="col-md-4 col-sm-6">
-                          <p><i class="fa fa-th-large"></i> 1500 Square foot</p>
-                          <p><i class="fa fa-bed"></i> 16 Bedrooms</p>
-                          <p><i class="fa fa-check-circle-o"></i> 
-                            Overlooking<br>  
-                            <b class="ml-4">Garden/Park, Main Road</b>
-                          </p>
-                      </div>
-                      <div class="col-md-4 col-sm-6">
-                        <p><i class="fa fa-car"></i> 2 Garages</p>
-                        <p><i class="fa fa-tint" aria-hidden="true"></i>
-                         Water/Electricity 24x7</p>
-                      </div>
-                      <div class="col-md-4 col-sm-6">
-                          <p><i class="fa fa-bath"></i> 8 Bathrooms</p>
-                          <p><i class="fa fa-check-circle-o"></i> 
-                            Flooring Type<br>
-                            <b class="ml-4">Vitrified Tiles Flooring</b>
-                          </p>
-                          
-                      </div>
-                  </div>
+        <div class="col-lg-8">
+        <h1 class="text-center" style="font-family: Georgia, 'Times New Roman', Times, serif;">kitchen</h1>
 
-                  <h3 class="sl-sp-title">Description</h3>
-                  <div class="description">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus egestas fermentum ornareste. Donec index lorem. Vestibulum  aliquet odio, eget tempor libero. Cras congue cursus tincidunt. Nullam venenatis dui id orci egestas tincidunt id elit. Nullam ut vuputate justo. Integer lacnia pharetra pretium. Casan ante ipsum primis in faucibus orci luctus et ultrice.</p>
-                  </div>
-
-                  {% if product.status == "Sale" %}
-                  {% if form2 %}
-                  <div class="container mt-5">
-                    <center><button type="button" class="btn btn-primary btn-lg btn-outline-primary" data-toggle="modal" data-target="#itemdetil">
-                      Buy
-                    </button></center>
-                    <div class="modal fade" id="itemdetil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Property </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                              <p class="text-danger"> {{error}} </p>
-                            <form class="form-group" method="post" onsubmit="return sale_validation()">
-                              {% csrf_token %}
-                                  <!-- {{ form2|crispy }} -->
-                              <div id="div_id_email" class="form-group"> 
-                                <label for="id_email" class=" requiredField">
-                                  Email<span class="asteriskField">*</span> 
-                                </label> 
-                                <div class=""> 
-                                  <!-- <input type="text" name="email" class="textinput textInput form-control" required id="id_email">  -->
-                                  {{form2.email}}
-                                </div> 
-                                <span id="sale_email_error" class="text-danger"></span>
-                              </div> 
-                              <div id="div_id_moblie" class="form-group"> 
-                                <label for="id_moblie" class=" requiredField">
-                                  Moblie<span class="asteriskField">*</span> 
-                                </label> 
-                                <div class=""> 
-                                  <!-- <input type="text" name="moblie" class="textinput textInput form-control" required id="id_moblie">  -->
-                                  {{form2.moblie}}
-                                </div> 
-                                <span id="sale_mobile_error" class="text-danger"></span>
-                              </div>
-                              
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                            
-                          </div>
-                          <div class="modal-footer">
-                              <div class="text-muted pt-3">
-                                  <small>Apply T&C</small>
-                              </div>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  {% endif %} 
-                  {% endif %}
-                                   
-                  {% if product.status == "Rent" %}
-                  {% if form1 %}
-                  <div class="container mt-5">
-                    <center><button type="button" class="btn btn-primary btn-lg btn-outline-primary" data-toggle="modal" data-target="#itemdetil">
-                      Take On Rent
-                    </button></center>
-                    <div class="modal fade" id="itemdetil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Property </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                              <p class="text-danger"> {{error}} </p>
-                            <form class="form-group" method="post" onsubmit="return rent_validation()">
-                              {% csrf_token %}
-                              <!-- {{ form1|crispy }} -->
-                              <div id="div_id_mobile" class="form-group"> 
-                                <label for="id_mobile" class=" requiredField">
-                                  Mobile<span class="asteriskField">*</span> 
-                                </label> 
-                                <div class=""> 
-                                  <!-- <input type="number" name="mobile" class="numberinput form-control form-control" required id="id_mobile">  -->
-                                  {{form1.mobile}}
-                                </div> 
-                                <span class="text-danger" id="mobile_error"></span> 
-                              </div> 
-                              <div id="div_id_email" class="form-group"> 
-                                <label for="id_email" class=" requiredField">
-                                  Email<span class="asteriskField">*</span> 
-                                </label> 
-                                <div class=""> 
-                                  <!-- <input type="email" name="email" maxlength="256" class="emailinput form-control form-control" required id="id_email">  -->
-                                  {{form1.email}}
-                                </div> 
-                              </div> 
-                              <div id="div_id_addhar_id" class="form-group"> 
-                                <label for="id_addhar_id" class=" requiredField">
-                                  Addhar id<span class="asteriskField">*</span> 
-                                </label> 
-                                <div class=""> 
-                                  <!-- <input type="number" name="addhar_id" class="numberinput form-control form-control" required id="id_addhar_id">  -->
-                                  {{form1.addhar_id}}
-                                </div> 
-                                <span class="text-danger" id="addhar_error"></span> 
-                              </div> 
-                              <div id="div_id_residence_address" class="form-group"> 
-                                <label for="id_residence_address" class=" requiredField">
-                                  Residence address<span class="asteriskField">*</span> 
-                                </label> 
-                                <div class=""> 
-                                  <!-- <input type="text" name="residence_address" maxlength="300" class="textinput textInput form-control form-control" required id="id_residence_address">  -->
-                                  {{form1.residence_address}}
-                                </div> 
-                                <span class="text-danger" id="residence_address_error"></span> 
-                              </div> 
-                              <div id="div_id_profession" class="form-group"> 
-                                <label for="id_profession" class=" requiredField">
-                                  Profession<span class="asteriskField">*</span> 
-                                </label> 
-                                <div class=""> 
-                                  <!-- <select name="profession" class="select form-control form-control" id="id_profession"> 
-                                    <option value="student">student</option> <option value="employee">employee</option> 
-                                    <option value="worker">worker</option>
-                                  </select>  -->
-                                  {{form1.profession}}
-                                </div> 
-                              </div> 
-                              <div id="div_id_voter_id" class="form-group"> 
-                                <label for="id_voter_id" class=" requiredField">
-                                  Voter id<span class="asteriskField">*</span> 
-                                </label> 
-                                <div class=""> 
-                                  <!-- <input type="text" name="voter_id" maxlength="30" class="textinput textInput form-control form-control" required id="id_voter_id">  -->
-                                  {{form1.voter_id}}
-                                </div>
-                                <span class="text-danger" id="voter_id_error"></span> 
-                              </div>
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                              
-                            </form>
-                            
-                          </div>
-                          <div class="modal-footer">
-                              <div class="text-muted pt-3">
-                                  <small>Apply T&C</small>
-                              </div>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  {% endif %} 
-                  {% endif %}
-                
-                  <script>
-                    function rent_validation(){
-                      var mob=document.getElementById("id_mobile").value;
-                      var addhar=document.getElementById("id_addhar_id").value;
-                      var voter=document.getElementById("id_voter_id").value;
-                      var residence_address=document.getElementById("id_residence_address").value;
-                      if(mob.length <=9){
-                        document.getElementById("mobile_error").innerHTML = "** Must be 10 Digit";
-                        return false;
-                      }
-                      if(addhar.length <=11){
-                        document.getElementById("addhar_error").innerHTML = "** Must be 12 Digit";
-                        return false;
-                      }
-                      if(residence_address.length <= 10){
-                        document.getElementById("residence_address_error").innerHTML = "** Enter Valid Address";
-                        return false;
-                      }
-                      if(voter.length <=5){
-                        document.getElementById("voter_id_error").innerHTML = "** Must be 6 Digit";
-                        return false;
-                      }
-                      
-                      
-                    }
-                    function sale_validation(){
-                      var mob=document.getElementById("id_moblie").value;
-                      if (mob.length <=9){
-                          document.getElementById("sale_mobile_error").innerHTML = "** Must be 10 Digit";
-                          return false;
-                      }
-                    }
-                  </script>
-
-                  <h3 class="sl-sp-title bd-no">{{ product.property_type }}</h3>
-                  <div id="accordion" class="plan-accordion">
-                      <div class="panel">
-                          <div class="panel-header" id="headingOne">
-                              <button class="panel-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">Ploat Structure <span>660 sq ft</span>	<i class="fa fa-angle-down"></i></button>
-                          </div>
-                          <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                              <div class="panel-body">
-                                  <img src="{{product.property_structure.url }}" style="height: 520px; margin-left:80px;" alt="">
-                              </div>
-                          </div>
-                      </div>                      
-                    </div>
-              </div>
-          </div>
-          <!-- sidebar -->
-           
+        <div class="img-fluid  img-thumbnail justify-content-center d-flex img-fluid"  id="krishan"><img src="{{product.kitchen_img.url }}" alt=""></div>
       </div>
+      <div class="col-lg-4 float-right">
+        <div class="img-fluid img-thumbnail justify-content-center d-flex img-fluid" id="krishan"><img src="{{product.kitchen_img.url }}" alt=""></div>
+        <div class="img-fluid img-thumbnail justify-content-center d-flex img-fluid" id="krishan"><img src="{{product.kitchen_img.url }}" alt=""></div>
+      </div>
+      
+    </div>
+    <div class="row mt-5" >
+      <div class="col-lg-8">
+        <h1 class="text-center" id=bedroom style="font-family: Georgia, 'Times New Roman', Times, serif;">Bedrooms</h1>
+      <div class="img-fluid  img-thumbnail justify-content-center d-flex img-fluid"  id="krishan"><img src="{{product.bedroom_img.url }}" alt=""></div>
+    </div>
+    <div class="col-lg-4 float-right">
+      <div class="img-fluid img-thumbnail justify-content-center d-flex img-fluid" id="krishan"><img src="{{product.bedroom_img.url }}" alt=""></div>
+      <div class="img-fluid img-thumbnail justify-content-center d-flex img-fluid" id="krishan"><img src="{{product.bedroom_img.url }}" alt=""></div>
+    </div>
+    
   </div>
-</section>
-{% endblock %} 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  </div>
+      <div class="container-fluid"  >
+        <div id="property-carousel" class="carousel slide mt-3"    data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#property-carousel" data-slide-to="0" class="active"></li>
+              <li data-target="#property-carousel" data-slide-to="1"></li>
+              <li data-target="#property-carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner"style="height:100%;" >
+              <div class="carousel-item active">
+                <img src="{{product.kitchen_img.url }}"  class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{{product.kitchen_img.url }}" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{{product.kitchen_img.url }}" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#property-carousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#property-carousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+      </div>
+     
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
+       <div class='container-fluid mt-5'>
+      <h4 class="text-primary"> Comment here : </h4>
+          
+        
+        <form action="{% url 'core:item_detail' product.id %}" method="POST" enctype="multipart/form-data"> 
+          {% csrf_token %}
+          <textarea  cols="60" rows="4" name="message"></textarea><br><br>
+          <input type="submit" value="submit" class="btn btn-primary">
+        </form>
+      </div>
 
+
+
+      <div class="container">
+        {% for item in comment reversed %}
+      {{ item.user }} 
+       <p>{{ item.message }} </p>
+      {% endfor %}
+      </div>
+
+      <div class="container">
+        <form action="{% url 'core:go' product.id %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+              Voterid : <br>
+              <input type="text"   name="voterid" placeholder="Voterid"><br><br>
+              Aadhar card :   <br>    
+              <input type="text" name="addharcard" ><br><br>
+               Profession : <br>
+                <input type="text"  name="profession" ><br><br>
+              Moblie : <br>
+              <input type="text"  name="moblie"   placeholder="Moblie"><br><br>
+        
+          <input type="submit" class="btn btn-primary" name="submit" balue= "Submit"> </input>
+          </form>
+      </div>
+
+      <h1>{{pro.error}}</h1>
+      {% endblock %}
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
 </html>

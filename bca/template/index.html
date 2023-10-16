@@ -10,95 +10,86 @@
 	<!-- Header section -->
 	<header class="header-section">
 		<div class="header-top">
-		  <div class="container">
-			<div class="row">
-			  <div class="col-lg-6 header-top-left">
-				<div class="top-info">
-				  <i class="fa fa-phone"></i>
-				  8118898116
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 header-top-left">
+						<div class="top-info">
+							<i class="fa fa-phone"></i>
+							8118898116
+						</div>
+						<div class="top-info">
+							<i class="fa fa-envelope"></i>
+							kumawatkrishan658@gmail.com
+						</div>
+					</div>
+					<div class="col-lg-6 text-lg-right header-top-right">
+						<div class="top-social">
+							<a href=""><i class="fa fa-facebook"></i></a>
+							<a href=""><i class="fa fa-twitter"></i></a>
+							<a href=""><i class="fa fa-instagram"></i></a>
+							<a href=""><i class="fa fa-pinterest"></i></a>
+							<a href=""><i class="fa fa-linkedin"></i></a>
+						</div>
+						<div class="user-panel">
+							{% if user.is_authenticated %}
+							<a href="{% url 'account_logout' %}"><i class="fa fa-lock"></i> Logout</a>
+							{% else %}
+							<a href="{% url 'account_login' %}"><i class="fa fa-sign-in"></i>Login</a>
+							<a href="{% url 'account_signup' %}"><i class="fa fa-sign-up"></i> Signup</a>
+							{% endif %}
+						</div>
+					</div>
 				</div>
-				<div class="top-info">
-				  <i class="fa fa-envelope"></i>
-				  kumawatkrishan658@gmail.com
-				</div>
-			  </div>
-			  <div class="col-lg-6 text-lg-right header-top-right">
-				<div class="top-social">
-				  <a href=""><i class="fa fa-facebook"></i></a>
-				  <a href=""><i class="fa fa-twitter"></i></a>
-				  <a href=""><i class="fa fa-instagram"></i></a>
-				  <a href=""><i class="fa fa-pinterest"></i></a>
-				  <a href=""><i class="fa fa-linkedin"></i></a>
-				</div>
-				<div class="user-panel">
-				  {% if user.is_authenticated %}
-				  <a href="{% url 'logout' %}"><i class="fa fa-logout"></i> Logout</a>
-				  {% else %}
-				  <a href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Login</a>
-				  <a href="{% url 'register' %}"><i class="fa fa-sign-up"></i> Signup</a>
-				  {% endif %}
-				</div>
-			  </div>
 			</div>
-		  </div>
 		</div>
 		<div class="container">
-		  <div class="row">
-			<div class="col-12">
-			  <div class="site-navbar">
-				<a href="#" class="site-logo"><img src="{% static 'img/logo.png' %}" alt=""></a>
-				<div class="nav-switch">
-				  <i class="fa fa-bars"></i>
+			<div class="row">
+				<div class="col-12">
+					<div class="site-navbar">
+						<a href="#" class="site-logo"><img src="{% static 'img/logo.png' %}" alt=""></a>
+						<div class="nav-switch">
+							<i class="fa fa-bars"></i>
+						</div>
+						<ul class="main-menu">
+							<li><a href="/">Home</a></li>
+							<li><a href="about.html">ABOUT US</a></li>						
+							<li><a href="{% url 'core:create' %}">Blog</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
 				</div>
-				<ul class="main-menu">
-				  <li><a href="/">Home</a></li>
-				  {% if user.is_authenticated %}
-				  <li><a href="{% url 'core:desh' %}">User Deshboard</a></li>
-				  <li><a href="blog.html">Blog</a></li>
-				  <li><a href="contact.html">Contact</a></li>
-				  {% else %}
-				  
-				  {% endif %}
-				</ul>
-			  </div>
 			</div>
-		  </div>
 		</div>
-	  </header>
+	</header>
 	<!-- Header section end -->
-
-
 
 <section class="hero-section set-bg"  style="height:600px;" data-setbg="{% static 'img/bg.jpg' %}">
 	<div class="container hero-text text-white">
 		<h2>find your place with our local life style</h2>
-		<p>Search real estate property records, houses, condos, land and more on leramiz.com®.<br>Find property info from
-		  the most comprehensive source data.</p>
-	  </div>
+		<p>Search real estate property records, houses, condos, land and more on leramiz.com®.<br>Find property info from the most comprehensive source data.</p>
+	</div>
 </section>
 	<!-- Filter form section -->
 	<div class="filter-search">
-		<center><div class="container">
+		<div class="container">
 			<form class="filter-form" action="{% url 'core:search' %}" method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
-				<!-- <input type="text" name="search" placeholder="Enter a street name, address number or keyword"> -->
-				<select name="city">
-					<option value="jaipur" selected="selected" >jaipur</option>
-					<option value="jodhpur" >jodhpur</option>
-					<option value="bikaner" >bikaner</option>
-					<option value="bhartpur" >bhartpur</option>
+				<input type="text" name="search" placeholder="Enter a street name, address number or keyword">
+				<select>
+					<option value="City" >jaipur</option>
+					<option value="City" >jodhpur</option>
+					<option value="City" >bikaner</option>
+					<option value="City" >bhartpur</option>
+					<option value="City" >mumbai</option>
+					<option value="City" >ahamdabad</option>
+					
 				</select>
-				<select name="pro_type">
-					<option value="Apartment" >Apartment</option>
-					<option value="Flats"  >Flats</option>
+				<select>
+					<option value="City">State</option>
 				</select>
-				<select name="pro_status">
-					<option value="Buy">Buy</option>
-					<option value="Rent">Rent</option>
-				</select>
-				<button class="site-btn fs-submit" >SEARCH</button>
+				<button style="float:right;" class="site-btn fs-submit" >SEARCH</button>
 			</form>
-		</div></center> 
+		</div>
 	</div>
 	<!-- Filter form section end -->
 
@@ -115,14 +106,14 @@
 				{% for i in object_list %}
 				<div class="col-md-6">
 			
-				<a href="{% url 'core:item_detail' i.id %}">	<div class="propertie-item_index set-bg" data-setbg="{{ i.image.url }}">
+				<a href="{% url 'core:item_detail' i.id %}">	<div class="propertie-item set-bg" data-setbg="{{ i.image.url }}">
 						<div class="rent-notic">{{ i.get_status_display }}</div>
 						<div class="propertie-info text-white">
 							<div class="info-warp">
 								<h5>{{ i.town_address }}</h5>
 								<p><i class="fa fa-map-marker"></i> {{ i.city }}</p>
 							</div>
-							<div class="price"><i class="fa fa-inr"></i> {{ i.price }}</div>
+							<div class="price">${{ i.price }}</div>
 						</div>
 					</div></a>
 					
@@ -170,7 +161,7 @@
 
 
 	<!-- feature category section -->
-	<!-- <section class="feature-category-section spad">
+	<section class="feature-category-section spad">
 		<div class="container">
 			<div class="section-title text-center">
 				<h3>LOOKING PROPERTY</h3>
@@ -178,15 +169,15 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-3 col-md-6 f-cata">
-					<a href="{% url 'core:apartment' %}"><img src="{% static 'img/feature-cate/1.jpg' %}" alt=""></a> 
-					<h5>Building Apartment for Rent/Sale</h5>
+					<img src="{% static 'img/feature-cate/1.jpg' %}" alt="">
+					<h5>Apartment for rent</h5>
 				</div>
 				<div class="col-lg-3 col-md-6 f-cata">
-					<a href="{% url 'core:home' %}"><img src="{% static 'img/feature-cate/1.jpg' %}" alt=""></a>
+					<img src="{% static 'img/feature-cate/2.jpg' %}" alt="">
 					<h5>Family Home</h5>
 				</div>
 				<div class="col-lg-3 col-md-6 f-cata">
-					<a href=""><img src="{% static 'img/feature-cate/3.jpg' %}" alt=""></a>
+					<img src="{% static 'img/feature-cate/3.jpg' %}" alt="">
 					<h5>Resort Villas</h5>
 				</div>
 				<div class="col-lg-3 col-md-6 f-cata">
@@ -195,7 +186,7 @@
 				</div>
 			</div>
 		</div>
-	</section> -->
+	</section>
 	<!-- feature category section end-->
 
 

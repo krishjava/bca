@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	{% load static %}
-	<title>{% block head_title %}{% endblock %}</title>
-	{% block extra_head %}
-	{% endblock %}
+{% load static %}
+<title>{% block head_title %}{% endblock %}</title>
+{% block extra_head %}
+{% endblock %}
 	<meta charset="UTF-8">
 	<meta name="description" content="LERAMIZ Landing Page Template">
 	<meta name="keywords" content="LERAMIZ, unica, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Favicon -->
-	<link href="img/favicon.ico" rel="shortcut icon" />
+	<!-- Favicon -->   
+	<link href="img/favicon.ico" rel="shortcut icon"/>
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
-	<link rel="stylesheet" href="{% static 'css/animate.css' %}" />
-	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
-	<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 
-	<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+	<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">	 
 	<style>
-		.asteriskField {
+		.asteriskField{
 			display: none;
 		}
 	</style>
@@ -35,15 +34,17 @@
 	<![endif]-->
 
 </head>
-
 <body>
-	{% block content %}
-
-	{% endblock %}
 
 
-	{% block extra_body %}
-	{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+
+{% block extra_body %}
+{% endblock %}
 
 
 
@@ -74,7 +75,7 @@
 
 
 
-
+                                      
 	<!--====== Javascripts & Jquery ======-->
 	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -85,6 +86,5 @@
 
 
 	<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
-</body>
-
+   </body>
 </html>

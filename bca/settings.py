@@ -23,7 +23,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'crispy_forms',
     'core',
-    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,6 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
      'star_ratings',
 ]
 
@@ -122,21 +124,15 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
 
 
-LOGIN_URL='login'
-
-LOGIN_REDIRECT_URL='/'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 SITE_ID = 1
-# LOGIN_REDIRECT_URL= "/"
+LOGIN_REDIRECT_URL= "/"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 
 STAR_RATINGS_RERATE = True
-
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = '100kumarvk@gmail.com'
-EMAIL_HOST_PASSWORD = 'vikash2172'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
 

@@ -1,118 +1,23 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
-<style>
-        hr{
-            height: 2px;
-            background-color: white;
-            border: none;
-}
-</style>
-
-<div class="container">
-    <div id="accordion" class="plan-accordion">
-        <div class="panel">
-            <div class="panel-header" id="headingOne">
-                <button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">User Profile<i class="fa fa-angle-down"></i></button>
-            </div>
-            <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="panel-body">
-
-<div class="container">
-    <!-- <div class="row justify-content-center">
-        <div class="col-sm-4 col-md-4">
-            {% for i in image %}
-           <center><img src="{{ i.user_image.url }}"  class="rounded-circle h-75 img-fluid img-thumbnail" alt="user image"></center> 
-            {% endfor %}
-        </div>
-    </div> -->
-    <div class="row justify-content-center">
+    <div class="row">
+        {% for i in  items %}
         <div class="col-md-6">
-            <div class="conatiner bg-dark">
-                <hr>
-                <div class="row justify-content-center">
-                    <div class="col-sm-4 col-md-4">
-                        <span class="font-weight-bold text-white">User Name</span> 
+    
+        <a href="{% url 'core:item_detail' i.id %}">	<div class="propertie-item set-bg" data-setbg="{{ i.image.url }}">
+                <div class="rent-notic">{{ i.get_status_display }}</div>
+                <div class="propertie-info text-white">
+                    <div class="info-warp">
+                        <h5>{{ i.town_address }}</h5>
+                        <p><i class="fa fa-map-marker"></i> {{ i.city }}</p>
                     </div>
-                    <div class="col-sm-4 col-md-6">
-                        <span class="font-weight-bold text-white">{{ user_name }}</span>
-                    </div> 
+                    <div class="price">${{ i.price }}</div>
                 </div>
-                <hr>
-                <div class="row justify-content-center">
-                    <div class="col-sm-4 col-md-4">
-                        <span class="font-weight-bold text-white">Email</span>
-                    </div>
-                    <div class="col-sm-4 col-md-6">
-                        <span class="font-weight-bold text-white">{{ user_email }}</span>
-                    </div>
-                </div> <hr>
-                <div class="row justify-content-center">
-                    <div class="col-sm-4 col-md-4">
-                        <span class="font-weight-bold text-white">Account Status</span>
-                    </div>
-                    <div class="col-sm-4 col-md-6">
-                        <span class="font-weight-bold text-white">Activated</span>
-                    </div>
-                </div> <hr>
-                <div class="row justify-content-center">
-                    <div class="col-sm-4 col-md-4">
-                        <span class="font-weight-bold text-white">Last Login Date</span>
-                    </div>
-                    <div class="col-sm-4 col-md-6">
-                        <span class="font-weight-bold text-white">{{ end }}</span>
-                    </div>
-                </div> <hr>
-                <div class="row justify-content-center">
-                    <div class="col-sm-4 col-md-4">
-                        <span class="font-weight-bold text-white"> <a href="{% url 'core:create' %}">Upload Property</a> </span>
-                    </div>
-                    <div class="col-sm-4 col-md-6">
-                        <span class="font-weight-bold text-white"> <a href="{% url 'password_change' %}">Change Password</a> </span>
-                    </div>
-                </div> <hr>
-            </div>
+            </div></a>
+            
         </div>
-</div>
-</div>
-                </div>
-            </div>
-        </div>
-        <div class="panel">
-            <div class="panel-header" id="headingTwo">
-                <button class="panel-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">Property Detail<i class="fa fa-angle-down"></i>
-                </button>
-            </div>
-            <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="panel-body">
-                    <div class="row">
-                        {% for i in  items %}
-                        <div class="col-md-6">
-                    
-                        <a href="{% url 'core:item_detail' i.id %}">	<div class="propertie-item set-bg" data-setbg="{{ i.image.url }}">
-                                <div class="rent-notic">{{ i.get_status_display }}</div>
-                                <div class="propertie-info text-white">
-                                    <div class="info-warp">
-                                        <h5>{{ i.town_address }}</h5>
-                                        <p><i class="fa fa-map-marker"></i> {{ i.city }}</p>
-                                    </div>
-                                    <div class="price">${{ i.price }}</div>
-                                </div>
-                            </div></a>
-                            
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
- 
-
-
-
-    
-
 {% endblock %}
  

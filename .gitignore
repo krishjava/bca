@@ -1,0 +1,17 @@
+*.jpg
+*.png
+*.jpeg
+*.db
+__pycache__
+*.egg
+pip-log.txt
+docs/_build
+.installed.cfg
+bin
+develop-eggs
+dist
+eggs
+parts
+src/*.egg-info
+lib
+lib64
